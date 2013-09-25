@@ -203,6 +203,30 @@ function displayHome(data) {
 		alert('clicked');
 	});
 	
+	$('a').click(function(e) {
+		e.preventDefault();
+	});
+	
+	
+	//$('#content').append('<div id="readDiv"><img id="glassesIcon" src="res/img/glassesIcon.png"></div>');
+	$('#content').append('<div id="readDiv"><div id="readBtn" class="readBtn">Weiter lesen<img id="readImg" src="res/img/searchIconDark.png"></div></div>');
+	
+	$("#readBtn").mousedown(function(){
+		$('#readBtn').attr('class', 'readBtnClicked');
+		$('#readImg').attr('src', 'res/img/searchIconLight.png');
+	});
+	$("#readBtn").mouseup(function(){
+		$('#readBtn').attr('class', 'readBtn');
+		$('#readImg').attr('src', 'res/img/searchIconDark.png');
+	});
+	$("#readBtn").bind('touchstart', function(){
+		$('#readBtn').attr('class', 'readBtnClicked');
+		$('#readImg').attr('src', 'res/img/searchIconLight.png');
+	}).bind('touchend', function(){
+		$('#readBtn').attr('class', 'readBtn');
+		$('#readImg').attr('src', 'res/img/searchIconDark.png');
+	});
+	
 	data = data.replace('content', 'newsContent');
 	
 	/*$('#content').append(data);
@@ -218,7 +242,7 @@ function displayHome(data) {
 	*/
 	//$('#content').append('<a href="http://bergischerbote.de/aktuelle-Ausgabe/PDF/BB04-2013web.pdf">Download pdf</a>');
 	
-	//centerScroll.refresh();
+	centerScroll.refresh();
 	
 }
 
@@ -325,7 +349,7 @@ function bindEvents() {
 	
 	
 	// IMPORTAINT FOR FORMS
-	/*centerScroll = new iScroll('wrapper', {
+	centerScroll = new iScroll('wrapper', {
 		vScrollbar: false,
 		hScrollbar: false,
 		hScroll: false,
@@ -337,7 +361,7 @@ function bindEvents() {
 			if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA')
 				e.preventDefault();
 		}
-	});*/
+	});
 	
 }
 

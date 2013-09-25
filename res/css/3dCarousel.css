@@ -302,6 +302,12 @@ and (max-width : 450px)
 		margin-right: auto;
 		padding-top: 50px;
 	}
+	
+	#readDiv {
+		width: 100%;
+		text-align: center;
+		margin-top: 10px;
+	}
 }
 
 
@@ -338,6 +344,12 @@ and (min-width : 451px) and (max-width : 800px)
 	#carousel figure {
 		height: 280px;
 	}
+	
+	#readDiv {
+		width: 100%;
+		text-align: center;
+		
+	}
 }
 
 @media all
@@ -373,6 +385,14 @@ and (min-width : 801px)
 	#carousel figure {
 		height: 448px;
 	}
+	
+	#readDiv {
+		width: 100%;
+		text-align: center;
+		margin-top: 175px;
+		margin-left: 20px;
+	}
+
 }
 
 
