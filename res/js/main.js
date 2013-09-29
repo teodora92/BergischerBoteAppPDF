@@ -325,7 +325,7 @@ function displayHome(data) {
 	*/
 	//$('#content').append('<a href="http://bergischerbote.de/aktuelle-Ausgabe/PDF/BB04-2013web.pdf">Download pdf</a>');
 	
-	centerScroll.refresh();
+	//centerScroll.refresh();
 	
 }
 
@@ -423,16 +423,11 @@ function bindEvents() {
 		meny.close();
 	});
 	
-	menuScroll = new iScroll('menuContent', {
-		vScrollbar: false,
-		hScrollbar: false,
-		bounce: false
-		
-	});
+	
 	
 	
 	// IMPORTAINT FOR FORMS
-	centerScroll = new iScroll('wrapper', {
+	/*centerScroll = new iScroll('wrapper', {
 		vScrollbar: false,
 		hScrollbar: false,
 		hScroll: false,
@@ -444,7 +439,7 @@ function bindEvents() {
 			if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA')
 				e.preventDefault();
 		}
-	});
+	});*/
 	
 }
 
@@ -486,19 +481,23 @@ function bindEvents() {
 	// on load behavior
 	document.addEventListener('DOMContentLoaded', function () { 
 	
-		$('#menuList li').each(function() {
-			urlList.push($(this).attr('url'));
+		$(window).load(function() {
+			$('#menuList li').each(function() {
+				urlList.push($(this).attr('url'));
+			});
+			
+			currentURL = "http://www.bergischerbote.de/index.htm";
+			currentPage = "home";
+			loadPage(currentURL);
+			
+			//var scroll1 = new iScroll('page1', {zoom: true});
+			bindEvents();
 		});
-		
-		currentURL = "http://www.bergischerbote.de/index.htm";
-		currentPage = "home";
-		loadPage(currentURL);
-		
-		var scroll1 = new iScroll('page1', {zoom: true});
-		bindEvents();
 		//loadHome();
 		
 	}, false);
+	
+	
 	
 	// back button and menu button functions for Android
 	document.addEventListener("deviceready", function() {	
