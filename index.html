@@ -7,10 +7,22 @@
 	<title>Bergischer Bote</title>
 	
 	<script src="res/js/jquery191min.js"></script>
+	<!--script src="res/js/jquerymigrate.js"></script-->
 	<script type="text/javascript" src="res/js/iscroll.js"></script>
 	<script type="text/javascript" src="res/js/jquerytouchSwipemin.js"></script>
 	<script type="text/javascript" src="res/js/utils.js"></script>
 	<script type="text/javascript" src="res/js/meny.min.js"></script>
+	
+	<!-- Turn pages javascript files -->
+	
+	<!--script type="text/javascript" src="res/js/jflip.js"></script-->
+	<script src="res/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+	<script src="res/js/jquery.easing.1.3.js" type="text/javascript"></script>
+	<script src="res/js/jquery.booklet.latest.js" type="text/javascript"></script>
+	
+	<script src="res/js/modernizr.custom.js"></script>	
+	<script src="res/js/jquerypp.custom.js"></script>
+	<script src="res/js/jquery.bookblock.min.js"></script>
 	
 	<!-- For recognizing android "deviceready" event -->
 	<script type="text/javascript" src="phonegap.js"></script>
@@ -20,14 +32,16 @@
 	<link rel="stylesheet" type="text/css" href="res/css/styles.css">
 	<link rel="stylesheet" type="text/css" href="res/css/3dCarousel.css">
 	
+	<!-- Turn pages css files -->
+	<link href="res/css/jquery.booklet.latest.css" type="text/css" rel="stylesheet" media="screen, projection, tv" />
 	
-	
+	<link rel="stylesheet" type="text/css" href="res/css/bookblock.css" />
 		
 </head>
 
 <body>
 	
-	<div class="pageLeftInv" id="pageLeft">
+	<!--div class="pageLeftInv" id="pageLeft">
 		<div id="menuContent">
 			<ul id="menuList">
 				<li class="navigationHeader">Navigation</li>
@@ -40,7 +54,7 @@
 				<li id="btnImpressum" page="impressum" url="http://www.bergischerbote.de/impressum.htm">Impressum</li>
 			</ul>
 		</div>
-	</div>
+	</div-->
 	
 	
 	<div id="pageCenter" class="pageCenterVis">
@@ -55,8 +69,56 @@
 		
 	</div>
 	
+	<div id="pageOver" class="pageOverHidden">
+		<!--ul id="pageTurner">
+			<li><img src="res/img/flowers1.jpg">
+			</li>
+			<li><img src="res/img/flowers2.jpg">
+			</li>
+			<li><img src="res/img/flowers3.jpg">
+			</li>
+		</ul-->
+		<div id="custom-next"></div>
+		<div id="custom-prev"></div>
+		
+	<div id="mybook">
+		<div class="b-load">
+			<div class="b-page-cover">
+				<img class="pdf" src="http://gyoca.com/cloud/demos/bergbote_pdf/res/img/pdf/0.png">
+			</div>
+			<div>
+				<img class="pdf" src="http://gyoca.com/cloud/demos/bergbote_pdf/res/img/pdf/1.1.png">
+			</div>
+			<div>
+				<img class="pdf" src="http://gyoca.com/cloud/demos/bergbote_pdf/res/img/pdf/1.2.png">
+			</div>
+			
+		</div>
+	</div>
+	
+	<!--div class="main clearfix">
+				<div class="bb-custom-wrapper">
+					<div id="bb-bookblock" class="bb-bookblock">
+						<div class="bb-item">
+							<img src="res/img/pdf/BB04-2013web-0.png">
+						</div>
+						<div class="bb-item">
+							<img src="res/img/pdf/BB04-2013web-1.png">
+						</div>
+						<div class="bb-item">
+							<img src="res/img/pdf/BB04-2013web-2.png">
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+	
+	</div-->
 	
 	<div id="pageRight" class="pageRightInv"></div>
+	
+	
 	<script type="text/javascript" src="res/js/main.js"></script>
 	
 	
