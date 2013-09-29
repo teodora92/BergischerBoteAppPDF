@@ -494,6 +494,8 @@ function bindEvents() {
 		currentPage = "home";
 		loadPage(currentURL);
 		
+		var scroll1 = new iScroll('page1', {zoom: true});
+		
 		//loadHome();
 		
 	}, false);
