@@ -495,7 +495,7 @@ function bindEvents() {
 		loadPage(currentURL);
 		
 		var scroll1 = new iScroll('page1', {zoom: true});
-		
+		bindEvents();
 		//loadHome();
 		
 	}, false);
@@ -518,6 +518,6 @@ function bindEvents() {
 		
 	}, false);
 
-	bindEvents();
+	
 	
 }
