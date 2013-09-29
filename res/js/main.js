@@ -248,8 +248,14 @@ function displayHome(data) {
 		$('#pageOver').attr('class', 'pageOverVis');
 		
 		var height = $( document ).height();
+		var docWidth = $( document ).width();
 		var width = height / 1.3685383244206773618538324420677;
 		width *= 2;
+		
+		if(width > docWidth) {
+			width = docWidth;
+			height = width * 1.3685383244206773618538324420677;
+		}
 		//$("#pageTurner").jFlip(width,height,{background:"#FFFFFF",cornersTop:true,scale:"fit", gradientColors:['#4F2727','#BBBBBB','#EFEFEF']});
 		$('#mybook').booklet({pagePadding: 0, closed: true, width: width, height: height, pageNumbers: false,  next: '#custom-next', prev: '#custom-prev', hovers: false, manual: false});
 		//$( '#bb-bookblock' ).bookblock();
