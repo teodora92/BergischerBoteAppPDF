@@ -317,10 +317,10 @@ function displayHome(data) {
 				$('#custom-prev').click();
 
 			}
-		},
+		}/*,
 		tap:function(event, target) {
 			alert('tapped');
-		}
+		}*/
 	});
 	
 	/*$('#pageOver').swipe({
