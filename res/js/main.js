@@ -208,14 +208,14 @@ function displayHome(data) {
 		var docWidth = $( document ).width();
 		var width = height / 1.3685383244206773618538324420677;
 		width *= 2;
-		
+		var dif = 0;
 		if(width > docWidth) {
 			width = docWidth;
 			height = width * 1.3685383244206773618538324420677;
+			height = height / 2;
 			var dif = docHeight - height;
 			dif = dif / 2;
-			
-			$('.pdf').css('padding-top', dif + 'px');
+
 		}
 		var margin = width / 2;
 		margin -= 32;
@@ -223,6 +223,10 @@ function displayHome(data) {
 		
 		//$("#pageTurner").jFlip(width,height,{background:"#FFFFFF",cornersTop:true,scale:"fit", gradientColors:['#4F2727','#BBBBBB','#EFEFEF']});
 		$('#mybook').booklet({pagePadding: 0, closed: true, width: width, height: height, pageNumbers: false,  next: '#custom-next', prev: '#custom-prev', hovers: false, manual: false});
+		
+		if(dif != 0) {
+			$('#mybook').css('margin-top', dif + 'px');
+		}
 		//$( '#bb-bookblock' ).bookblock();
 	});
 	
@@ -268,7 +272,9 @@ function displayHome(data) {
 		
 		if(dif != 0) {
 			$('#mybook').css('margin-top', dif + 'px');
-		}//$( '#bb-bookblock' ).bookblock();
+		}
+		
+		//$( '#bb-bookblock' ).bookblock();
 	});
 	$("#readBtn").bind('touchstart', function(){
 		$('#readBtn').attr('class', 'readBtnClicked');
@@ -285,19 +291,24 @@ function displayHome(data) {
 		var docWidth = $( document ).width();
 		var width = height / 1.3685383244206773618538324420677;
 		width *= 2;
-		
+		var dif = 0;
 		if(width > docWidth) {
 			width = docWidth;
 			height = width * 1.3685383244206773618538324420677;
-			var dif = docHeight - height;
+			height = height/2;
+			dif = docHeight - height;
 			dif = dif / 2;
-			$('.pdf').css('padding-top', dif + 'px');
 		}
 		var margin = width / 2;
 		margin -= 32;
 		$('.btnClose').css('margin-left', margin+ 'px');
 		//$("#pageTurner").jFlip(width,height,{background:"#FFFFFF",cornersTop:true,scale:"fit", gradientColors:['#4F2727','#BBBBBB','#EFEFEF']});
 		$('#mybook').booklet({pagePadding: 0, closed: true, width: width, height: height, pageNumbers: false,  next: '#custom-next', prev: '#custom-prev', hovers: false, manual: false});
+		
+		if(dif != 0) {
+			$('#mybook').css('margin-top', dif + 'px');
+		}
+		
 		//$( '#bb-bookblock' ).bookblock();
 	});
 	
