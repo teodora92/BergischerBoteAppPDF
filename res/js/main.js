@@ -214,6 +214,7 @@ function displayHome(data) {
 			height = width * 1.3685383244206773618538324420677;
 			var dif = docHeight - height;
 			dif = dif / 2;
+			
 			$('.pdf').css('padding-top', dif + 'px');
 		}
 		var margin = width / 2;
@@ -248,20 +249,26 @@ function displayHome(data) {
 		var docWidth = $( document ).width();
 		var width = height / 1.3685383244206773618538324420677;
 		width *= 2;
-		
+		var dif = 0;
 		if(width > docWidth) {
 			width = docWidth;
 			height = width * 1.3685383244206773618538324420677;
-			var dif = docHeight - height;
+			height = height / 2;
+			dif = docHeight - height;
 			dif = dif / 2;
-			$('.pdf').css('padding-top', dif + 'px');
+			//alert(dif);
+			
 		}
 		var margin = width / 2;
 		margin -= 32;
 		$('.btnClose').css('margin-left', margin+ 'px');
 		//$("#pageTurner").jFlip(width,height,{background:"#FFFFFF",cornersTop:true,scale:"fit", gradientColors:['#4F2727','#BBBBBB','#EFEFEF']});
+		
 		$('#mybook').booklet({pagePadding: 0, closed: true, width: width, height: height, pageNumbers: false,  next: '#custom-next', prev: '#custom-prev', hovers: false, manual: false});
-		//$( '#bb-bookblock' ).bookblock();
+		
+		if(dif != 0) {
+			$('#mybook').css('margin-top', dif + 'px');
+		}//$( '#bb-bookblock' ).bookblock();
 	});
 	$("#readBtn").bind('touchstart', function(){
 		$('#readBtn').attr('class', 'readBtnClicked');
@@ -308,7 +315,8 @@ function displayHome(data) {
 				if(currentScale != 1.0) {
 					return;
 				}
-			
+				
+				
 				scroll1.destroy();
 				scroll2.destroy();
 				$('#custom-next').click();
@@ -317,8 +325,9 @@ function displayHome(data) {
 				//alert('swiped left');
 				//$('#pageTurner').trigger("flip.jflip");
 				currentScrollPage += 2;
-				if(currentScrollPage >= 33) {
-					currentScrollPage = 33;
+				if(currentScrollPage > 33) {
+					currentScrollPage = 35;
+					return;
 				}
 				var page1 = currentScrollPage-1;
 				var page2 = currentScrollPage;
@@ -332,7 +341,7 @@ function displayHome(data) {
 					scroll2 = new iScroll('page'+page2, {zoom: true, vScrollbar: false, onZoomEnd: function() {
 						currentScale = this.scale;
 					}});
-				}, 1000);
+				}, 2000);
 			}
 			
 			if(direction == "right") {
@@ -343,7 +352,6 @@ function displayHome(data) {
 				if(currentScale != 1.0) {
 					return;
 				}
-				
 				
 				currentScrollPage -= 2;
 				if(currentScrollPage <= 1) {
@@ -368,7 +376,7 @@ function displayHome(data) {
 						currentScale = this.scale;
 					}});
 				
-				}, 1000);
+				}, 2000);
 
 			}
 		},
