@@ -554,7 +554,7 @@ function initScrolls() {
 			currentPage = "home";
 			loadPage(currentURL);
 			
-			initScrolls();
+			//initScrolls();
 			bindEvents();
 		});
 		//loadHome();
