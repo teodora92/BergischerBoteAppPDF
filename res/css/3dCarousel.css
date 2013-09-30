@@ -14,11 +14,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  background-color: blue;
-  background-color: hsl( 220, 90%, 50% );
-  color: white;
-}
 
 #options {
   position: relative;

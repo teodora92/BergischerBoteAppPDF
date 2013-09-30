@@ -200,8 +200,29 @@ function displayHome(data) {
 	init();
 	
 	$('.link').click(function() {
-		alert('clicked');
+		
 		$('#pageOver').attr('class', 'pageOverVis');
+		
+		var height = $( document ).height();
+		var docHeight = height;
+		var docWidth = $( document ).width();
+		var width = height / 1.3685383244206773618538324420677;
+		width *= 2;
+		
+		if(width > docWidth) {
+			width = docWidth;
+			height = width * 1.3685383244206773618538324420677;
+			var dif = docHeight - height;
+			dif = dif / 2;
+			$('.pdf').css('padding-top', dif + 'px');
+		}
+		var margin = width / 2;
+		margin -= 32;
+		$('.btnClose').css('margin-left', margin+ 'px');
+		
+		//$("#pageTurner").jFlip(width,height,{background:"#FFFFFF",cornersTop:true,scale:"fit", gradientColors:['#4F2727','#BBBBBB','#EFEFEF']});
+		$('#mybook').booklet({pagePadding: 0, closed: true, width: width, height: height, pageNumbers: false,  next: '#custom-next', prev: '#custom-prev', hovers: false, manual: false});
+		//$( '#bb-bookblock' ).bookblock();
 	});
 	
 	$('a').click(function(e) {
@@ -220,10 +241,10 @@ function displayHome(data) {
 		$('#readBtn').attr('class', 'readBtn');
 		$('#readImg').attr('src', 'res/img/searchIconDark.png');
 		
-		alert('clicked');
 		$('#pageOver').attr('class', 'pageOverVis');
 		
 		var height = $( document ).height();
+		var docHeight = height;
 		var docWidth = $( document ).width();
 		var width = height / 1.3685383244206773618538324420677;
 		width *= 2;
@@ -231,8 +252,13 @@ function displayHome(data) {
 		if(width > docWidth) {
 			width = docWidth;
 			height = width * 1.3685383244206773618538324420677;
+			var dif = docHeight - height;
+			dif = dif / 2;
+			$('.pdf').css('padding-top', dif + 'px');
 		}
-		
+		var margin = width / 2;
+		margin -= 32;
+		$('.btnClose').css('margin-left', margin+ 'px');
 		//$("#pageTurner").jFlip(width,height,{background:"#FFFFFF",cornersTop:true,scale:"fit", gradientColors:['#4F2727','#BBBBBB','#EFEFEF']});
 		$('#mybook').booklet({pagePadding: 0, closed: true, width: width, height: height, pageNumbers: false,  next: '#custom-next', prev: '#custom-prev', hovers: false, manual: false});
 		//$( '#bb-bookblock' ).bookblock();
@@ -244,10 +270,11 @@ function displayHome(data) {
 		$('#readBtn').attr('class', 'readBtn');
 		$('#readImg').attr('src', 'res/img/searchIconDark.png');
 		
-		alert('clicked');
+		
 		$('#pageOver').attr('class', 'pageOverVis');
 		
 		var height = $( document ).height();
+		var docHeight = height;
 		var docWidth = $( document ).width();
 		var width = height / 1.3685383244206773618538324420677;
 		width *= 2;
@@ -255,7 +282,13 @@ function displayHome(data) {
 		if(width > docWidth) {
 			width = docWidth;
 			height = width * 1.3685383244206773618538324420677;
+			var dif = docHeight - height;
+			dif = dif / 2;
+			$('.pdf').css('padding-top', dif + 'px');
 		}
+		var margin = width / 2;
+		margin -= 32;
+		$('.btnClose').css('margin-left', margin+ 'px');
 		//$("#pageTurner").jFlip(width,height,{background:"#FFFFFF",cornersTop:true,scale:"fit", gradientColors:['#4F2727','#BBBBBB','#EFEFEF']});
 		$('#mybook').booklet({pagePadding: 0, closed: true, width: width, height: height, pageNumbers: false,  next: '#custom-next', prev: '#custom-prev', hovers: false, manual: false});
 		//$( '#bb-bookblock' ).bookblock();
@@ -284,6 +317,9 @@ function displayHome(data) {
 				$('#custom-prev').click();
 
 			}
+		},
+		tap:function(event, target) {
+			alert('tapped');
 		}
 	});
 	
@@ -306,9 +342,7 @@ function displayHome(data) {
 		}
 	});*/
 	
-	$('#btnHello').click(function() {
-		alert('hello :)');
-	});
+	
 	
 	data = data.replace('content', 'newsContent');
 	
@@ -405,27 +439,20 @@ function bindEvents() {
 		}	
 	});
 	
-	$('#menuList li').click(function() {
 	
-		if($(this).attr('class') == "navigationHeader") {
-			meny.close();
-			return;
-		}
 	
-		$('.currentMenuItem').attr('class', '');
-		$(this).attr('class', 'currentMenuItem');
-	
-		currentURL = $(this).attr('url');
-		currentPage = $(this).attr('page');
-		
-		currentScale = 1.0;
-		loadPage(currentURL);
-		meny.close();
+	$(".btnClose").bind('touchstart', function(){
+		$(this).attr('src', 'res/img/btnCloseDark.png');
+	}).bind('touchend', function(){
+		$(this).attr('src', 'res/img/btnCloseLight.png');
 	});
 	
-	
-	
-	
+	$(".btnClose").mousedown(function(){
+		$(this).attr('src', 'res/img/btnCloseDark.png');
+	});
+	$(".btnClose").mouseup(function(){
+		$(this).attr('src', 'res/img/btnCloseLight.png');
+	});
 	// IMPORTAINT FOR FORMS
 	/*centerScroll = new iScroll('wrapper', {
 		vScrollbar: false,
@@ -441,6 +468,43 @@ function bindEvents() {
 		}
 	});*/
 	
+}
+
+function initScrolls() {
+	var scroll1 = new iScroll('page1', {zoom: true});
+	var scroll2 = new iScroll('page2', {zoom: true});
+	var scroll3 = new iScroll('page3', {zoom: true});
+	var scroll4 = new iScroll('page4', {zoom: true});
+	var scroll5 = new iScroll('page5', {zoom: true});
+	var scroll6 = new iScroll('page6', {zoom: true});
+	var scroll7 = new iScroll('page7', {zoom: true});
+	var scroll8 = new iScroll('page8', {zoom: true});
+	var scroll9 = new iScroll('page9', {zoom: true});
+	var scroll10 = new iScroll('page10', {zoom: true});
+	var scroll11 = new iScroll('page11', {zoom: true});
+	var scroll12 = new iScroll('page12', {zoom: true});
+	var scroll13 = new iScroll('page13', {zoom: true});
+	var scroll14 = new iScroll('page14', {zoom: true});
+	var scroll15 = new iScroll('page15', {zoom: true});
+	var scroll16 = new iScroll('page16', {zoom: true});
+	var scroll17 = new iScroll('page17', {zoom: true});
+	var scroll18 = new iScroll('page18', {zoom: true});
+	var scroll19 = new iScroll('page19', {zoom: true});
+	var scroll20 = new iScroll('page20', {zoom: true});
+	var scroll21 = new iScroll('page21', {zoom: true});
+	var scroll22 = new iScroll('page22', {zoom: true});
+	var scroll23 = new iScroll('page23', {zoom: true});
+	var scroll24 = new iScroll('page24', {zoom: true});
+	var scroll25 = new iScroll('page25', {zoom: true});
+	var scroll26 = new iScroll('page26', {zoom: true});
+	var scroll27 = new iScroll('page27', {zoom: true});
+	var scroll28 = new iScroll('page28', {zoom: true});
+	var scroll29 = new iScroll('page29', {zoom: true});
+	var scroll30 = new iScroll('page30', {zoom: true});
+	var scroll31 = new iScroll('page31', {zoom: true});
+	var scroll32 = new iScroll('page32', {zoom: true});
+	var scroll33 = new iScroll('page33', {zoom: true});
+			
 }
 
 /*
@@ -490,7 +554,7 @@ function bindEvents() {
 			currentPage = "home";
 			loadPage(currentURL);
 			
-			//var scroll1 = new iScroll('page1', {zoom: true});
+			initScrolls();
 			bindEvents();
 		});
 		//loadHome();
