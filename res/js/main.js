@@ -309,6 +309,11 @@ function displayHome(data) {
 					return;
 				}
 			
+				scroll1.destroy();
+				scroll2.destroy();
+				$('#custom-next').click();
+				
+			
 				//alert('swiped left');
 				//$('#pageTurner').trigger("flip.jflip");
 				currentScrollPage += 2;
@@ -317,16 +322,17 @@ function displayHome(data) {
 				}
 				var page1 = currentScrollPage-1;
 				var page2 = currentScrollPage;
-				scroll1.destroy();
-				scroll1 = new iScroll('page'+page1, {zoom: true, vScroll: false, onZoomEnd: function() {
-					currentScale = this.scale;
-				}});
-				
-				scroll2.destroy();
-				scroll2 = new iScroll('page'+page2, {zoom: true, vScroll: false, onZoomEnd: function() {
-					currentScale = this.scale;
-				}});
-				$('#custom-next').click();
+				setTimeout(function() {
+					
+					scroll1 = new iScroll('page'+page1, {zoom: true, vScrollbar: false, onZoomEnd: function() {
+						currentScale = this.scale;
+					}});
+					
+					
+					scroll2 = new iScroll('page'+page2, {zoom: true, vScrollbar: false, onZoomEnd: function() {
+						currentScale = this.scale;
+					}});
+				}, 1000);
 			}
 			
 			if(direction == "right") {
@@ -337,26 +343,32 @@ function displayHome(data) {
 				if(currentScale != 1.0) {
 					return;
 				}
+				
+				
 				currentScrollPage -= 2;
 				if(currentScrollPage <= 1) {
 					currentScrollPage = 1;
 					$('#custom-prev').click();
 					return;
 				}
+				scroll1.destroy();
+				scroll2.destroy();
+				$('#custom-prev').click();
 				
 				var page1 = currentScrollPage-1;
 				var page2 = currentScrollPage;
-				scroll1.destroy();
-				scroll1 = new iScroll('page'+page1, {zoom: true, vScroll: false, onZoomEnd: function() {
-					currentScale = this.scale;
-				}});
+				setTimeout(function() {
+					
+					scroll1 = new iScroll('page'+page1, {zoom: true, vScrollbar: false, onZoomEnd: function() {
+						currentScale = this.scale;
+					}});
+					
+					
+					scroll2 = new iScroll('page'+page2, {zoom: true, vScrollbar: false, onZoomEnd: function() {
+						currentScale = this.scale;
+					}});
 				
-				scroll2.destroy();
-				scroll2 = new iScroll('page'+page2, {zoom: true, vScroll: false, onZoomEnd: function() {
-					currentScale = this.scale;
-				}});
-				
-				$('#custom-prev').click();
+				}, 1000);
 
 			}
 		},
@@ -546,7 +558,7 @@ function bindEvents() {
 	var rootClientURL = "http://www.bergischerbote.de/";
 	var rootURL = "http://gyoca.com/cloud/demos/bergbote_pdf/res/php/getURL/:";
 	// currentPage can be: ["home", "abo", "archive", "detail", "karriere", "jobs", "media", "impressum"]
-	var currentPage, currentScale, currentURL;
+	var currentPage, currentScale = 1.0, currentURL;
 	var menuScroll, centerScroll;
 	var frontPageScroll, scroll1, scroll2;
 	var currentScrollPage = 1;
@@ -564,13 +576,13 @@ function bindEvents() {
 			loadPage(currentURL);
 			
 			//initScrolls();
-			frontPageScroll = new iScroll('page1', {zoom: true, vScroll: false, onZoomEnd: function() {
+			frontPageScroll = new iScroll('page1', {zoom: true, vScrollbar: false, onZoomEnd: function() {
 				currentScale = this.scale;
 			}});
-			scroll1 = new iScroll('page2', {zoom: true, vScroll: false, onZoomEnd: function() {
+			scroll1 = new iScroll('page2', {zoom: true, vScrollbar: false, onZoomEnd: function() {
 				currentScale = this.scale;
 			}});
-			scroll2 = new iScroll('page3', {zoom: true, vScroll: false, onZoomEnd: function() {
+			scroll2 = new iScroll('page3', {zoom: true, vScrollbar: false, onZoomEnd: function() {
 				currentScale = this.scale;
 			}});
 			bindEvents();
