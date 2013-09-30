@@ -214,7 +214,7 @@ function displayHome(data) {
 			height = width * 1.3685383244206773618538324420677;
 			var dif = docHeight - height;
 			dif = dif / 2;
-			//$('.pdf').css('padding-top', dif + 'px');
+			$('.pdf').css('padding-top', dif + 'px');
 		}
 		var margin = width / 2;
 		margin -= 32;
@@ -254,7 +254,7 @@ function displayHome(data) {
 			height = width * 1.3685383244206773618538324420677;
 			var dif = docHeight - height;
 			dif = dif / 2;
-			//$('.pdf').css('padding-top', dif + 'px');
+			$('.pdf').css('padding-top', dif + 'px');
 		}
 		var margin = width / 2;
 		margin -= 32;
@@ -284,7 +284,7 @@ function displayHome(data) {
 			height = width * 1.3685383244206773618538324420677;
 			var dif = docHeight - height;
 			dif = dif / 2;
-			//$('.pdf').css('padding-top', dif + 'px');
+			$('.pdf').css('padding-top', dif + 'px');
 		}
 		var margin = width / 2;
 		margin -= 32;
@@ -304,6 +304,11 @@ function displayHome(data) {
 	$('#pageOver').swipe({
 		swipe: function(event, direction, distance, duration, fingerCount) {
 			if(direction == "left") {
+			
+				if(currentScale != 1.0) {
+					return;
+				}
+			
 				//alert('swiped left');
 				//$('#pageTurner').trigger("flip.jflip");
 				currentScrollPage += 2;
@@ -313,10 +318,14 @@ function displayHome(data) {
 				var page1 = currentScrollPage-1;
 				var page2 = currentScrollPage;
 				scroll1.destroy();
-				scroll1 = new iScroll('page'+page1, {zoom: true, vScroll: false});
+				scroll1 = new iScroll('page'+page1, {zoom: true, vScroll: false, onZoomEnd: function() {
+					currentScale = this.scale;
+				}});
 				
 				scroll2.destroy();
-				scroll2 = new iScroll('page'+page2, {zoom: true, vScroll: false});
+				scroll2 = new iScroll('page'+page2, {zoom: true, vScroll: false, onZoomEnd: function() {
+					currentScale = this.scale;
+				}});
 				$('#custom-next').click();
 			}
 			
@@ -325,7 +334,9 @@ function displayHome(data) {
 				//document.getElementById('pageCenter').setAttribute('class', 'pageCenterInv');
 				//alert('swiped right');
 				//meny.open();
-				
+				if(currentScale != 1.0) {
+					return;
+				}
 				currentScrollPage -= 2;
 				if(currentScrollPage <= 1) {
 					currentScrollPage = 1;
@@ -336,16 +347,20 @@ function displayHome(data) {
 				var page1 = currentScrollPage-1;
 				var page2 = currentScrollPage;
 				scroll1.destroy();
-				scroll1 = new iScroll('page'+page1, {zoom: true, vScroll: false});
+				scroll1 = new iScroll('page'+page1, {zoom: true, vScroll: false, onZoomEnd: function() {
+					currentScale = this.scale;
+				}});
 				
 				scroll2.destroy();
-				scroll2 = new iScroll('page'+page2, {zoom: true, vScroll: false});
+				scroll2 = new iScroll('page'+page2, {zoom: true, vScroll: false, onZoomEnd: function() {
+					currentScale = this.scale;
+				}});
 				
 				$('#custom-prev').click();
 
 			}
 		},
-		tap:function(event, target) {
+		tap: function(event, target) {
 			alert('tapped');
 		}
 	});
@@ -497,42 +512,7 @@ function bindEvents() {
 	
 }
 
-function initScrolls() {
-	var scroll1 = new iScroll('page1', {zoom: true});
-	var scroll2 = new iScroll('page2', {zoom: true});
-	var scroll3 = new iScroll('page3', {zoom: true});
-	var scroll4 = new iScroll('page4', {zoom: true});
-	var scroll5 = new iScroll('page5', {zoom: true});
-	var scroll6 = new iScroll('page6', {zoom: true});
-	var scroll7 = new iScroll('page7', {zoom: true});
-	var scroll8 = new iScroll('page8', {zoom: true});
-	var scroll9 = new iScroll('page9', {zoom: true});
-	var scroll10 = new iScroll('page10', {zoom: true});
-	var scroll11 = new iScroll('page11', {zoom: true});
-	var scroll12 = new iScroll('page12', {zoom: true});
-	var scroll13 = new iScroll('page13', {zoom: true});
-	var scroll14 = new iScroll('page14', {zoom: true});
-	var scroll15 = new iScroll('page15', {zoom: true});
-	var scroll16 = new iScroll('page16', {zoom: true});
-	var scroll17 = new iScroll('page17', {zoom: true});
-	var scroll18 = new iScroll('page18', {zoom: true});
-	var scroll19 = new iScroll('page19', {zoom: true});
-	var scroll20 = new iScroll('page20', {zoom: true});
-	var scroll21 = new iScroll('page21', {zoom: true});
-	var scroll22 = new iScroll('page22', {zoom: true});
-	var scroll23 = new iScroll('page23', {zoom: true});
-	var scroll24 = new iScroll('page24', {zoom: true});
-	var scroll25 = new iScroll('page25', {zoom: true});
-	var scroll26 = new iScroll('page26', {zoom: true});
-	var scroll27 = new iScroll('page27', {zoom: true});
-	var scroll28 = new iScroll('page28', {zoom: true});
-	var scroll29 = new iScroll('page29', {zoom: true});
-	var scroll30 = new iScroll('page30', {zoom: true});
-	var scroll31 = new iScroll('page31', {zoom: true});
-	var scroll32 = new iScroll('page32', {zoom: true});
-	var scroll33 = new iScroll('page33', {zoom: true});
-			
-}
+
 
 /*
 	Starting function
@@ -584,9 +564,15 @@ function initScrolls() {
 			loadPage(currentURL);
 			
 			//initScrolls();
-			frontPageScroll = new iScroll('page1', {zoom: true, vScroll: false});
-			scroll1 = new iScroll('page2', {zoom: true, vScroll: false});
-			scroll2 = new iScroll('page3', {zoom: true, vScroll: false});
+			frontPageScroll = new iScroll('page1', {zoom: true, vScroll: false, onZoomEnd: function() {
+				currentScale = this.scale;
+			}});
+			scroll1 = new iScroll('page2', {zoom: true, vScroll: false, onZoomEnd: function() {
+				currentScale = this.scale;
+			}});
+			scroll2 = new iScroll('page3', {zoom: true, vScroll: false, onZoomEnd: function() {
+				currentScale = this.scale;
+			}});
 			bindEvents();
 		});
 		//loadHome();
