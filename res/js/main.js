@@ -306,6 +306,17 @@ function displayHome(data) {
 			if(direction == "left") {
 				//alert('swiped left');
 				//$('#pageTurner').trigger("flip.jflip");
+				currentScrollPage += 2;
+				if(currentScrollPage >= 33) {
+					currentScrollPage = 33;
+				}
+				var page1 = currentScrollPage-1;
+				var page2 = currentScrollPage;
+				scroll1.destroy();
+				scroll1 = new iScroll('page'+page1, {zoom: true, vScroll: false});
+				
+				scroll2.destroy();
+				scroll2 = new iScroll('page'+page2, {zoom: true, vScroll: false});
 				$('#custom-next').click();
 			}
 			
@@ -314,13 +325,29 @@ function displayHome(data) {
 				//document.getElementById('pageCenter').setAttribute('class', 'pageCenterInv');
 				//alert('swiped right');
 				//meny.open();
+				
+				currentScrollPage -= 2;
+				if(currentScrollPage <= 1) {
+					currentScrollPage = 1;
+					$('#custom-prev').click();
+					return;
+				}
+				
+				var page1 = currentScrollPage-1;
+				var page2 = currentScrollPage;
+				scroll1.destroy();
+				scroll1 = new iScroll('page'+page1, {zoom: true, vScroll: false});
+				
+				scroll2.destroy();
+				scroll2 = new iScroll('page'+page2, {zoom: true, vScroll: false});
+				
 				$('#custom-prev').click();
 
 			}
-		}/*,
+		},
 		tap:function(event, target) {
 			alert('tapped');
-		}*/
+		}
 	});
 	
 	/*$('#pageOver').swipe({
@@ -541,7 +568,9 @@ function initScrolls() {
 	// currentPage can be: ["home", "abo", "archive", "detail", "karriere", "jobs", "media", "impressum"]
 	var currentPage, currentScale, currentURL;
 	var menuScroll, centerScroll;
-
+	var frontPageScroll, scroll1, scroll2;
+	var currentScrollPage = 1;
+	
 	// on load behavior
 	document.addEventListener('DOMContentLoaded', function () { 
 	
@@ -555,6 +584,9 @@ function initScrolls() {
 			loadPage(currentURL);
 			
 			//initScrolls();
+			frontPageScroll = new iScroll('page1', {zoom: true, vScroll: false});
+			scroll1 = new iScroll('page2', {zoom: true, vScroll: false});
+			scroll2 = new iScroll('page3', {zoom: true, vScroll: false});
 			bindEvents();
 		});
 		//loadHome();
