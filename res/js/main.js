@@ -214,7 +214,7 @@ function displayHome(data) {
 			height = width * 1.3685383244206773618538324420677;
 			var dif = docHeight - height;
 			dif = dif / 2;
-			$('.pdf').css('padding-top', dif + 'px');
+			//$('.pdf').css('padding-top', dif + 'px');
 		}
 		var margin = width / 2;
 		margin -= 32;
@@ -254,7 +254,7 @@ function displayHome(data) {
 			height = width * 1.3685383244206773618538324420677;
 			var dif = docHeight - height;
 			dif = dif / 2;
-			$('.pdf').css('padding-top', dif + 'px');
+			//$('.pdf').css('padding-top', dif + 'px');
 		}
 		var margin = width / 2;
 		margin -= 32;
@@ -284,7 +284,7 @@ function displayHome(data) {
 			height = width * 1.3685383244206773618538324420677;
 			var dif = docHeight - height;
 			dif = dif / 2;
-			$('.pdf').css('padding-top', dif + 'px');
+			//$('.pdf').css('padding-top', dif + 'px');
 		}
 		var margin = width / 2;
 		margin -= 32;
